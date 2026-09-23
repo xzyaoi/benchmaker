@@ -622,6 +622,34 @@ comparison. Get the dataset with `python tools/tracelab/prepare.py`.
 
 YAML: `type: tracelab` (accepts every constructor kwarg).
 
+### `AgentXWorkload`
+
+Replays the [SemiAnalysis AgentX](https://inferencex.semianalysis.com/agentx)
+v1.0 agentic-coding corpus (WEKA-format Claude Code sessions with subagent
+topology, no prompt text): block-hash synthetic prompts that preserve the
+recording's byte-exact prefix-cache structure, session-tree DAG dispatch
+(concurrent subagent streams, recorded spawn/join/gap timing), a per-lane
+primer + warmup pass excluded from metrics, and per-play cache-bust markers.
+See [AgentX benchmark](agentx.md) for the full walkthrough.
+
+```python
+from benchmaker import AgentXWorkload
+
+workload = AgentXWorkload(
+    ".local/agentx-traces-weka-062126.jsonl",
+    concurrency=8,             # live session trees
+    warmup_requests=10,        # unmeasured warmup per lane (after primer)
+    max_context=131072,        # carve corpus to the server's context window
+    chars_per_token=4.0,       # char-mode sizing (use tokenizer= for exact)
+)
+```
+
+Pair it with `OpenAIChatWorkloadType(passthrough_meta=True)` and install the
+workload's `completion_hook()` on the runner — the DAG advances through the
+post-hook. Get the dataset with `python tools/agentx/prepare.py`.
+
+YAML: `type: agentx` (accepts every constructor kwarg).
+
 ---
 
 ## Custom workload

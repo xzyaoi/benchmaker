@@ -56,6 +56,9 @@ A benchmark in benchmaker is the composition of four things:
 15. [Command timeouts under load](command-timeout-under-load.md) — deterministic
     `accuracy(τ)` curve (`τ = T/L`) measuring how per-command timeouts degrade
     SWE-bench accuracy; offline Tier‑1 analysis + live `BENCH_LOAD_FACTOR` sweep.
+16. [AgentX](agentx.md) — the SemiAnalysis agentic-coding inference benchmark:
+    WEKA trace replay with block-hash synthetic prompts, subagent DAGs, seeded
+    warmup, and a profiling window.
 
 ## Where things live
 

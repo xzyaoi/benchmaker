@@ -23,6 +23,7 @@ from benchmaker.workloads.rag import DeepRAGWorkload
 from benchmaker.workloads.sglang import SGLangGenerateWorkloadType
 from benchmaker.workloads.agentic import AgenticWorkload
 from benchmaker.workloads.tracelab import TraceLabWorkload
+from benchmaker.workloads.agentx import AgentXWorkload
 from benchmaker.workloads.agent import (
     Agent,
     AgentContext,
@@ -95,6 +96,7 @@ __all__ = [
     "SGLangGenerateWorkloadType",
     "AgenticWorkload",
     "TraceLabWorkload",
+    "AgentXWorkload",
     # agent workload (pluggable user-defined agents)
     "Agent",
     "AgentContext",

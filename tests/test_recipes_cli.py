@@ -126,7 +126,7 @@ def test_registry_has_expected_recipes():
     names = {r.name for r in all_recipes()}
     assert names == {"http", "llm", "sglang", "sandbox", "swebench",
                      "swebench-replay", "agentic", "pareval",
-                     "tracelab"}
+                     "tracelab", "agentx"}
 
 
 def test_recipes_registered_as_subcommands():

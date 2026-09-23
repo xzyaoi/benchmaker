@@ -163,6 +163,9 @@ def build_workload(spec: Any) -> Workload:
     if t == "agentic":
         from benchmaker.workloads.agentic import AgenticWorkload
         return AgenticWorkload(**kwargs)
+    if t in ("agentx", "agent-x"):
+        from benchmaker.workloads.agentx import AgentXWorkload
+        return AgentXWorkload(**kwargs)
     raise ValueError(f"Unknown workload type {t!r}")
 
 

@@ -2,6 +2,18 @@
 
 ## Unreleased
 
+- Added the `agentx` recipe and workload (`benchmaker agentx`, YAML `type:
+  agentx`): the SemiAnalysis AgentX v1.0 agentic-coding benchmark
+  (https://inferencex.semianalysis.com/agentx). Replays the public WEKA-format
+  Claude Code trace corpus (`semianalysisai/cc-traces-weka-062126[-256k]`, or
+  a local JSONL) with block-hash synthetic prompts that preserve the
+  recording's byte-exact prefix-cache structure, session-tree DAG dispatch
+  (main turns + concurrent subagent streams with recorded spawn/join/gap
+  timing and a system-idle cap), seeded mid-session start points, a per-lane
+  primer + warmup pass excluded from metrics, per-play cache-bust markers,
+  recorded decode lengths (`ignore_eos`), and a default one-hour profiling
+  window. Includes `tools/agentx/prepare.py` for corpus download/subsetting
+  and `docs/agentx.md`.
 - **Breaking:** renamed the `trajectory-replay` workload to `agentic`, since it
   represents multi-turn *agentic* workloads. The CLI recipe is now
   `benchmaker agentic` (was `trajectory-replay`); the YAML workload `type:
